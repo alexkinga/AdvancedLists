@@ -4,7 +4,6 @@ import {ProductModel} from '../../models/product.model';
 import {ProductsService} from '../../services/products.service';
 import {map} from "rxjs/operators";
 
-
 @Component({
   selector: 'app-sorted-product-list',
   templateUrl: './sorted-product-list.component.html',
@@ -13,7 +12,9 @@ import {map} from "rxjs/operators";
 })
 export class SortedProductListComponent {
   private _orderSubject: BehaviorSubject<string> = new BehaviorSubject<string>('asc');
+  public orders: Observable<string[]> = of(['asc', 'desc']);
   public order$: Observable<string> = this._orderSubject.asObservable();
+
   readonly products$: Observable<ProductModel[]> = combineLatest([
     this._productsService.getAll(),
     this.order$
@@ -26,7 +27,6 @@ export class SortedProductListComponent {
       })
     })
   );
-  public orders: Observable<string[]> = of(['asc', 'desc']);
 
   constructor(private _productsService: ProductsService) {
   }

@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-title></mat-card-title>
+  <mat-card-content>
+    <mat-selection-list role="list">
+      <mat-list-option role="listitem" (click)="getAge(item.min, item.max)" *ngFor="let item of age$ | async">{{item.min}} {{item.max}}</mat-list-option>
+    </mat-selection-list>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-title>Employees</mat-card-title>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let item of employees$ | async">{{item.name}} {{item.age}}</mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
