@@ -9,6 +9,16 @@
   </mat-card-content>
 </mat-card>
 <mat-card>
+  <mat-card-title>Sort</mat-card-title>
+  <mat-card-content>
+    <mat-selection-list role="list" fxLayout="row" [multiple]="false">
+      <mat-list-option role="listoption" *ngFor="let item of orders | async" [value]="item" (click)="sort(item)">
+        {{item}}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-card-content>
+</mat-card>
+<mat-card>
   <mat-card-title>Products</mat-card-title>
   <mat-card-content>
     <mat-list role="list">
@@ -16,3 +26,5 @@
     </mat-list>
   </mat-card-content>
 </mat-card>
+
+
